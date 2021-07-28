@@ -1,6 +1,6 @@
 const express = require("express")
 const app = express()
-const uploadImage = require("./index")
+const uploadImage = require("./imageUpload")
 
 app.post('/uploadimg', uploadImage.single('file'), (req, res, next) => {
     res.send(req.file.location)

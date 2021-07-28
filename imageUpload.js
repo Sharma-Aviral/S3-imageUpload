@@ -20,18 +20,17 @@ const s3 = new aws.S3();
 const uploadImage = multer({
     storage: multerS3({
       s3: s3,
-      bucket: aws_bucketname,
+      bucket: process.env.aws_bucketname ,
       acl : "public-read",
       metadata: function (req, file, cb) {
-        cb(null, {fieldName: file.fieldname});
+        cb(null, {fieldName: file.fieldname });
       },
       key: function (req, file, cb) {
-        cb(null, Date.now().toString())
+        cb(null, Date.now().toString() + ".jpg" )
       }
     })
   })
    
   
-  git
 
 module.exports = uploadImage
